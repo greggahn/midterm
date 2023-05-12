@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body {
+    background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #333;
+  }
+
+  h1 {
+    color: #0080ff;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  footer p {
+    text-align: center;
+  }
+
+  #login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  #reg-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .int {
+    background-color: #fff;
+    font-size: 15px;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+  }
+
+  .btn {
+    background-color: blue;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background-color: #ca296a;
+  }
+
+  .error-message {
+    color: red;
+  }
+
+  .success-message {
+    color: green;
+  }
+</style>
+
+<head>
+  <title>Midterm</title>
+</head>
+
+<body>
+  <header>
+    <h1>Midterm 20202089</h1>
+  </header>
+
+  <main>
+    <div id="reg-section">
+      <form id="reg-form">
+        <h2>회원가입</h2>
+
+        <span class="int_id">
+          <label for="id">아이디</label>
+          <input type="text" id="id" placeholder="id 입력" class="int">
+        </span>
+        <span class="int_id">
+          <label for="password"> 비밀번호</label>
+          <input type="password" id="password" placeholder="비밀번호 입력" class="int">
+        </span>
+        <span class="int_id">
+          <label for="confirm-password"> 비밀번호 확인</label>
+          <input type="password" id="confirm-password" placeholder="비밀번호 확인" class="int">
+        </span>
+
+        <div>
+          <input type="submit" value="회원가입" class="btn">
+          <button id="login-button" class="btn">로그인</button>
+        </div>
+
+        <div id="reg-error" class="error-message"></div>
+        <div id="reg-success" class="success-message"></div>
+      </form>
+    </div>
+
+    <div id="login-section" style="display:none">
+      <form id="login-form">
+        <h2>로그인</h2>
+
+        <span class="int_id">
+          <label for="id">아이디</label>
+          <input type="text" id="id" placeholder="id 입력" class="int">
+        </span>
+        <span class="int_id">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" placeholder="비밀번호 입력" class="int">
+        </span>
+
+        <div>
+          <input type="submit" value="로그인" class="btn">
+          <button id="regi-button" class="btn">회원가입</button>
+        </div>
+
+        <div id="login-error" class="error-message"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>2023 Webclient Ahn Hyounjong 20202089</p>
+  </footer>
+
+</html>
+
+<script>
+  const regSection = document.getElementById('reg-section');
+  const loginSection = document.getElementById('login-section');
+
+  const regForm = document.getElementById('reg-form');
+  const loginForm = document.getElementById('login-form');
+
+  const loginButton = document.getElementById('login-button');
+  const regiButton = document.getElementById('regi-button');
+
+  loginButton.addEventListener('click', () => {
+    loginSection.style.display = 'block';
+    regSection.style.display = 'none';
+  });
+  regiButton.addEventListener('click', () => {
+    regSection.style.display = 'block';
+    loginSection.style.display = 'none';
+  });
+
+  regForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const id = regForm.elements.id.value;
+    const password = regForm.elements.password.value;
+    const confirmPassword = regForm.elements['confirm-password'].value;
+
+    if (id === '' || password === '' || confirmPassword === '') {
+      document.getElementById('reg-error').textContent = 'id 또는 비밀번호를 입력해주세요';
+      document.getElementById('reg-success').textContent = '';
+    } else if (password !== confirmPassword) {
+      document.getElementById('reg-error').textContent = '비밀번호가 일치하지 않습니다';
+      document.getElementById('reg-success').textContent = '';
+    } else {
+      document.getElementById('reg-error').textContent = '';
+      document.getElementById('reg-success').textContent = '회원가입에 성공하였습니다';
+    }
+  });
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const id = loginForm.elements.id.value;
+    const password = loginForm.elements.password.value;
+
+
+    if (id === '' || password === '') {
+      document.getElementById('login-error').textContent = 'id 또는 비밀번호를 입력해주세요';
+    } else if (id !== regForm.elements.id.value || password !== regForm.elements.password.value) {
+      document.getElementById('login-error').textContent = 'id 또는 비밀번호가 일치하지 않습니다';
+    } else {
+      document.getElementById('login-error').textContent = '';
+      alert('로그인 되었습니다');
+    }
+
+  });
+</script>

@@ -1,0 +1,24 @@
+{
+    "name": "kookbob",
+    "version": "1.0.0",
+    "scripts": {
+        "client": "cd client && yarn start",
+        "server": "nodemon server.js",
+        "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    },
+    "dependencies": {
+        "@mui/styles": "^5.12.3",
+        "axios": "^1.4.0",
+        "body-parser": "^1.20.2",
+        "express": "4.18.2",
+        "global": "^4.4.0",
+        "multer": "^1.4.5-lts.1",
+        "mysql": "^2.18.1",
+        "react-scripts": "^5.0.1",
+        "sharp": "^0.32.1"
+    },
+    "devDependencies": {
+        "concurrently": "8.0.1"
+    }
+    
+}

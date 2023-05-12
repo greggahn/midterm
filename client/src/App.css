@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+
+.logo {
+  padding: 60px;
+  font-weight: 800;
+  font-size: 80px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input[type="text"],
+  input[type="password"] {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.register{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.reg-section{
+  display: none;
+}
+
+.btn {
+  margin-top: 20px;
+  align-items: center;
+  background-color: rgb(115, 115, 209);
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #ca296a;
+}
